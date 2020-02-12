@@ -23,15 +23,15 @@ namespace Ederson_Cardoso_Exercise01
         public MainWindow()
         {
             InitializeComponent();
-        }
+		}
 
 		/// <summary>
 		/// This method canculate the payment value
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-        private void CalculateButton_Click(object sender, RoutedEventArgs e)
-        {
+		private void CalculateButton_Click(object sender, RoutedEventArgs e)
+		{
 			try
 			{
 				double total = 0, discount = 0, hst = 0;
@@ -78,8 +78,11 @@ namespace Ederson_Cardoso_Exercise01
 					hst = 0.06;
 				}
 
+				// Check is patient's name is informed
+				var name = string.IsNullOrEmpty(PatientNameTextBox.Text) ? "[NOT INFORMED]": PatientNameTextBox.Text;
+				
 				// Format string output
-				string output = ($"Patient: {PatientNameTextBox.Text} \n" +
+				string output = ($"Patient Name: {name} \n" +
 					$"Before tax: {total, 10:C} \n" +
 					$"Discount: {discount, 12:C} \n" +
 					$"HST: {((total - discount) * hst), 20:C} \n" +
